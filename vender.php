@@ -11,6 +11,7 @@ $nome = $_POST['nome'] ?? '';
 $descricao = $_POST['descricao'] ?? '';
 $preco = $_POST['preco'] ?? '';
 $arquivo = $_FILES['imagem'] ?? '';
+$escola = $_SESSION['escola'] ?? '';
 if (isset($arquivo) && isset($nome) && isset($descricao) && isset($preco)) {
     $caminhoTemporario = $arquivo['tmp_name'];
     if (!file_exists('imagens/')) {
@@ -20,13 +21,20 @@ if (isset($arquivo) && isset($nome) && isset($descricao) && isset($preco)) {
     $novoNome = "imagens/" . uniqid() . '.' . $extensao;
     if (move_uploaded_file($caminhoTemporario, $novoNome)) {
         try {
-            $sql = "INSERT INTO produtos VALUES(:Nome,:Descricao,null,:Imagem,:preco)";
+            $sql = "INSERT INTO produtos VALUES(:Nome,:Descricao,null,:Imagem,:preco,:Escola)";
             $stmt = $conn->prepare($sql);
             $stmt->execute([
                 ':Nome' => $nome,
                 ':Descricao' => $descricao,
                 ':Imagem' => $novoNome,
-                ':preco' => $preco
+                ':preco' => $preco,
+                ':Escola' => $escola
+            ]);
+            $inserir = "INSERT INTO userproduto VALUES (:usuarios, :produtos, null)";
+            $manda = $conn->prepare($inserir);
+            $manda->execute([
+                ':usuarios' => $_SESSION['usuario'],
+                ':produtos' => $conn->lastInsertId()
             ]);
             echo 'Produto cadastrado com sucesso!';
         } catch (\Throwable $th) {
