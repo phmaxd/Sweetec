@@ -12,7 +12,8 @@ if ($verificacao->rowCount() > 0) {
     $usuario = $verificacao->fetch(PDO::FETCH_ASSOC);
     if (password_verify($senha, $usuario['Senha'])) {
         session_start();
-        $_SESSION['usuario'] = $usuario['Usuarios'];
+        $_SESSION['usuario'] = $usuario['Id'];
+        $_SESSION['escola'] = $usuario['Escola'];
         echo json_encode(['data' => 'Login realizado com sucesso']);
     } else {
         echo json_encode(['data' => "usuario ou senha incorreto"]);
