@@ -1,8 +1,8 @@
 <?php
-include 'conecta.php';
-session_start();
 
-$id = $_SESSION['compra'] ?? '';
+include "conecta.php";
+
+$id = $_POST['id'] ?? null;
 
 $sql = "
     SELECT p.*, u.*
@@ -21,5 +21,5 @@ if (!$resultado) {
     echo "Nenhum produto encontrado.";
     exit();
 }
-echo $resultado['Nome'] . " - " . $resultado['Descricao'] . " - " . $resultado['Imagem'] . " - " . $resultado['Id'] . " - " . $resultado['Numero'];
 
+echo $resultado['Nome'] . " - " . $resultado['Descricao'] . " - <img src='" . $resultado['Imagem'] . "'> - " . $resultado['Escola'] ."-" . $resultado['preco'] ."-" . $resultado['Numero'] ;

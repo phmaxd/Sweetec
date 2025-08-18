@@ -79,7 +79,6 @@ window.onload = async () => {
           idDisplay.className = "id-display"
           document.body.appendChild(idDisplay)
         }
-
         // Limpa o conteúdo anterior
         texto.innerHTML = ""
 
@@ -88,7 +87,7 @@ window.onload = async () => {
           linha.classList.add("linha-tabela")
           linha.innerHTML = `
             <td style="padding:0; border:none;">
-              <div class="card" data-id="${dados.Id}" style="
+              <div onclick="redirecionarPG(${dados.Id})" class="card" data-id="${dados.Id}" style="
                 box-sizing: border-box;
                 padding: 10px;
                 border: 1px solid #ccc;
@@ -114,7 +113,6 @@ window.onload = async () => {
           const card = event.target.closest(".card")
           if (card) {
             const elementId = card.getAttribute("data-id")
-            mostrarId(elementId)
           }
         })
       } else {
@@ -128,23 +126,6 @@ window.onload = async () => {
   }
 }
 
-async function mostrarId(id) {
-  $.ajax({
-    url: "compra.php",
-    type: "POST",
-    data: { id: id },
-    success: function(response) {
-      const data = JSON.parse(response)
-      if (data.data && data.data.length > 0) {
-        idDisplay.textContent = `ID: ${data.data[0].Id}`
-        idDisplay.style.display = "block"
-      } else {
-        idDisplay.textContent = "ID não encontrado"
-        idDisplay.style.display = "block"
-      }
-    }
-})
-}
 async function logar() {
 
     var nome = document.getElementById("Nome").value;
@@ -178,7 +159,8 @@ async function cadastrar() {
     var nome = document.getElementById("Nome").value;
     var senha = document.getElementById("Senha").value;
     var escola = document.getElementById("Escolas").value;
-    if (nome == "" || senha == "") {
+    const Numero = document.getElementById("Numero").value;
+    if (nome == "" || senha == "" || Numero == "") {
         alert("Por favor, preencha todos os campos.");
         return;
     } else {
@@ -186,6 +168,8 @@ async function cadastrar() {
         data.append("Nome", nome);
         data.append("Senha", senha);
         data.append("Escolas", escola);
+        data.append("Numero", Numero);
+        // Envia os dados para o servidor
         const conexao = await fetch('cadastrar.php', {
             method: 'POST',
             body: data.toString(),
@@ -302,4 +286,18 @@ async function search() {
     });
 }
 async function comprar(){
+}
+async function redirecionarPG(id) {
+  $.ajax({
+    url: "instanciarProduto.php",
+    type: "POST",
+    data: { id: id },
+    dataType: "html"
+  }).done(function(resp) {
+  $("body").html(resp); 
+  }).fail(function(jqXHR, textStatus) {
+  alert("Falha na requisição AJAX: " + textStatus);
+  }).always(function() {
+  console.log("Requisição AJAX carregar cartas concluída");
+  });
 }
