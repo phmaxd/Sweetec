@@ -4,9 +4,51 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pagina</title>
-    <script src="login.js"></script>
+    <script defer src="login.js"></script>  
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
+    <header>
+        <nav>
+            <span class="logo">
+                <img src="imagens/SweeTec (1).png" id="logo" onclick="refresh()" >
+            </span>
+            <span class="searchSpan"><i onclick="search()" class="fa-solid fa-magnifying-glass white"></i><input type="text" id="Procurar" class="inputSpan" placeholder="Search..."></span>
+        </nav>
+    </header>
+<br> 
+<br>
+<br>
+    <main>
+        <section id="barra-lateral">
+
+            <a onclick="vender()"class="botao-lateral">
+                <span >
+                <i class="fa-solid fa-cart-shopping"></i> Anunciar
+                </span>   
+            </a>
     
+            <a class="botao-lateral">
+                <span>
+                    <i class="fa-solid fa-folder"></i> Meus produtos
+                </span>
+            </a>
+
+            <a class="botao-lateral">
+                <span>
+                    <i class="fa-solid fa-user"></i> Conta
+                </span>
+            </a>
+
+        </section>
+
+        <section id="cardContainer">
+
+        </section>
+ 
+    </main>
+
 </body>
 </html>

@@ -5,12 +5,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <script src="login.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
-    <input type="text" id="Nome" placeholder="Nome">
-    <input type="password" id="Senha" placeholder="Senha">
+    <div id="formulario">
+        <h1>Bem Vindo!</h1>
+        <span id="caixaInput"><i class="fa-solid fa-user"></i><input type="text" class="inputInput" id="Nome" placeholder="Nome"></span>
+    <br>
+        <span id="caixaInput"><i class="fa-solid fa-lock"></i><input type="password" class="inputInput" id="Senha" placeholder="Senha"></span>
+    
+        <a id="Esqueci" onclick="esqueci()">Esqueceu sua senha?</a>
+    <br><br>
     <button id="Login" onclick="logar()">Login</button>
-    <button id="Cadastrar"><a href="Cadastro.html">Cadastre-se</a></button>
-    <button id="Esqueci" onclick="esqueci()">Esqueci minha senha</button>
+    
+    <br><br>
+    <hr>
+    <span id="butaoDeBaixo">
+        <p>Ainda não tem Conta? <a id="Cadastrar-se" href="Cadastro.html">Cadastre-se</a></p>
+    </span>
+    <br>
+
+</div>
 </body>
 </html>

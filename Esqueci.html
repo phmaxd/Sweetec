@@ -4,13 +4,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Alterar Senha</title>
+        <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
-    <h1>Alterar Senha</h1>
-    <input type="text" id="Nome" placeholder="Nome">
-    <input type="password" id="Senha" placeholder="Senha">
-    <input type="password" id="ConfirmaSenha" placeholder="Confirme a Senha">
-    <button onclick="enviar()">Alterar Senha</button>
+    <div id="formulario">
+        <h1>Alterar Senha</h1>
+
+        <span id="caixaInput"><i class="fa-solid fa-user"></i><input class="inputInput" type="text" id="Nome" placeholder="Nome"></span>
+        <br>
+        <span id="caixaInput"><i class="fa-solid fa-lock"></i><input class="inputInput" type="password" id="Senha" placeholder="Senha"></span>
+        <br>
+        <span id="caixaInput"><i class="fa-solid fa-lock"></i><input class="inputInput" type="password" id="ConfirmaSenha" placeholder="Confirme a Senha"></span>
+        <br><hr>
+        <button onclick="enviar()" id="alterar">Alterar Senha</button>
+    </div>
 
     <script src="login.js"></script>
 </body>
