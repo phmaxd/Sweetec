@@ -53,7 +53,7 @@ if (paginaAtual === "Cadastro.html"|| paginaAtual==="login.html"){
           linha.innerHTML = `
             
               <div  class="cardContent" data-id="${dados.Id}" >
-                <img src="${dados.Imagem}" alt="Imagem do produto" style="width: 100%; height: auto; border-radius: 4px;">
+                <img src="${dados.Imagem}" alt="Imagem do produto" style="width: 100%; height: auto; border-radius: 1vh;">
                 <span><p id="nome"> ${dados.Nome}</p></span>
                 <span style="display:none;"><p >${dados.Descricao}</p></span>
 
@@ -268,7 +268,7 @@ async function redirecionarPG(id) {
 document.getElementById("Procurar").addEventListener("input", function(event) {
     
         search()
-    
+     window.scrollTo(0, 0);
 });
 
 async function refresh(params) {
@@ -284,7 +284,9 @@ async function conta(params) {
     data: { verificar: "verificação" },
     dataType: "html"
   }).done(function(resp) {
-  alert(resp);
+
+    document.getElementsByClassName("modal")[0].innerHTML = resp;
+
   }).fail(function(jqXHR, textStatus) {
   alert("Falha na requisição AJAX: " + textStatus);
   }).always(function() {
@@ -309,3 +311,15 @@ async function sair(params) {
     });
   }
 }
+const abrirModal = document.getElementById("abrirCamera");
+const modalOverlay = document.getElementsByClassName("modal-overlay")[0];
+abrirModal.addEventListener("click", () => {
+    modalOverlay.style.display = "flex";
+});
+
+
+modalOverlay.addEventListener("click", (e) => {
+    if (e.target === modalOverlay) {
+        modalOverlay.style.display = "none";
+    }
+});
