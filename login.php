@@ -12,6 +12,7 @@ if ($verificacao->rowCount() > 0) {
     $usuario = $verificacao->fetch(PDO::FETCH_ASSOC);
     if (password_verify($senha, $usuario['Senha'])) {
         session_start();
+        $_SESSION['IsLogadoCG'] = true;
         $_SESSION['usuario'] = $usuario['Id'];
         $_SESSION['escola'] = $usuario['Escola'];
         echo json_encode(['data' => 'Login realizado com sucesso']);

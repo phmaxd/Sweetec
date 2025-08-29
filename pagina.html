@@ -15,7 +15,9 @@
             <span class="logo">
                 <img src="imagens/SweeTec (1).png" id="logo" onclick="refresh()" >
             </span>
-            <span class="searchSpan"><i onclick="search()" class="fa-solid fa-magnifying-glass white"></i><input type="text" id="Procurar" class="inputSpan" placeholder="Search..."></span>
+            <span class="searchSpan"><i onclick="search()" class="fa-solid fa-magnifying-glass white"></i>
+                <input type="text" id="Procurar" class="inputSpan" placeholder="Search...">
+            </span>
         </nav>
     </header>
 <br> 
@@ -35,10 +37,16 @@
                     <i class="fa-solid fa-folder"></i> Meus produtos
                 </span>
             </a>
-
-            <a class="botao-lateral">
+            
+            <a class="botao-lateral" onclick="conta()">
                 <span>
                     <i class="fa-solid fa-user"></i> Conta
+                </span>
+            </a>
+
+            <a class="botao-lateral" onclick="sair()">
+                <span>
+                    <i class="fa-solid fa-right-from-bracket"></i> Sair
                 </span>
             </a>
 

@@ -1,4 +1,27 @@
 window.onload = async () => {
+const paginaAtual = window.location.pathname.split('/').pop();
+  
+if (paginaAtual === "Cadastro.html"|| paginaAtual==="login.html"){
+    //faz nada, já que isso é pra verificar login, e essas sao as paginas pra logar
+}else{
+
+    $.ajax({
+      url: "verificarLogin.php",
+      type: "POST",
+      data: { verificar: "verificação" },
+      dataType: "json"
+    }).done(function(resp) {
+      if(resp.islogado != true){
+        window.location.href = "login.html";
+      }
+    }).fail(function(jqXHR, textStatus) {
+      alert("Falha na requisição AJAX: " + textStatus);
+    }).always(function() {
+      console.log("Requisição AJAX verificar login concluída");
+    });
+
+}
+
   try {
     const conecta = await fetch("tela.php", {
       method: "POST",
@@ -58,7 +81,10 @@ window.onload = async () => {
   } catch (error) {
     console.log(error)
   }
-}
+
+} 
+// fim onload
+
 
 async function logar() {
 
@@ -248,4 +274,38 @@ document.getElementById("Procurar").addEventListener("input", function(event) {
 async function refresh(params) {
   
   window.location.href = "pagina.html"
+}
+
+async function conta(params) {
+
+  $.ajax({
+    url: "verificarConta.php",
+    type: "POST",
+    data: { verificar: "verificação" },
+    dataType: "html"
+  }).done(function(resp) {
+  alert(resp);
+  }).fail(function(jqXHR, textStatus) {
+  alert("Falha na requisição AJAX: " + textStatus);
+  }).always(function() {
+  console.log("Requisição AJAX verificar conta concluída");
+  });
+
+}
+async function sair(params) {
+  if(confirm("Tem certeza que deseja sair?")){
+    $.ajax({
+      url: "deslogarSession.php",
+      type: "POST",
+      data: { deslogar: "deslogar" },
+      dataType: "html"
+    }).done(function(resp) {
+      alert(resp);
+      window.location.href = "login.html";
+    }).fail(function(jqXHR, textStatus) {
+      alert("Falha na requisição AJAX: " + textStatus);
+    }).always(function() {
+      console.log("Requisição AJAX deslogar concluída");
+    });
+  }
 }
