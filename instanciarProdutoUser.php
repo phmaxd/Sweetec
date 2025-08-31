@@ -30,12 +30,15 @@ echo "
     
         <section id='ladoDireitoP'>
             <img id='imagemP' src='" . $resultado['Imagem'] . "'>
-            <span id='apagar' onclick='apagarProduto(".$id.")'>Apagar produto</span>
+            <section id='emBaixoIMG'>
+                <span id='apagar' onclick='apagarProduto(".$id.")'>Apagar produto</span>
+                <i id='iIMG' onclick='editarImagem(".$id.",\"imagemP\", \"".$resultado['Imagem']."\")' class='fa-solid fa-pen-to-square editar'></i>
+            </section>
         </section>
         <section id='ladoEsquerdoP'>
-            <span id='nomeP'>".$resultado['Nome']." </span>
-            <span id='precoP'>R$ " . $resultado['preco'] . "</span>
-            <span id='descricaoP'>" . $resultado['Descricao'] . " </span>
+            <span id='nomeP'>".$resultado['Nome']." <i onclick='editar(\"Nome\",".$id.",\"nomeP\", \"".$resultado['Nome']."\")' class='fa-solid fa-pen-to-square editar'></i></span> 
+            <span id='precoP'>R$ " . $resultado['preco'] . " <i <i onclick='editar(\"preco\",".$id.",\"precoP\", \"".$resultado['preco']."\")' class='fa-solid fa-pen-to-square editar'></i></span>
+            <span id='descricaoP'>" . $resultado['Descricao'] . " <i <i onclick='editar(\"Descricao\",".$id.",\"descricaoP\", \"".$resultado['Descricao']."\")' class='fa-solid fa-pen-to-square editar'></i></span>
                 <section id='contato'>
                     <span id='usuariosP'>Entre em contato:</span>
                     <span id='noneP'>Vendedor: " . $resultado['Usuarios'] . "</span>

@@ -1,4 +1,4 @@
-window.onload = async () => {
+window.addEventListener("load", function(){
 const paginaAtual = window.location.pathname.split('/').pop();
   
 if (paginaAtual === "Cadastro.html"|| paginaAtual==="login.html"){
@@ -35,66 +35,54 @@ if (paginaAtual === "Cadastro.html"|| paginaAtual==="login.html"){
 
 }
 
-  try {
-    const conecta = await fetch("tela.php", {
-      method: "POST",
-      credentials: "include",
-      headers: {
-        "Content-Type": "application/x-www-form-urlencoded",
-      },
-      body: "",
-    })
+$.ajax({
+  url: "tela.php",
+  type: "POST",
+  data: "", // se precisar enviar algo, coloque aqui
+  dataType: "json",
+  success: function(info) {
+    var texto = $("#cardContainer");
+    
+    if (texto.length && Array.isArray(info.data)) {
+      // Limpa o conteúdo anterior
+      texto.html("");
 
-    if (conecta.ok) {
-      const info = await conecta.json()
-      var texto = document.getElementById("cardContainer")
-      if (texto && Array.isArray(info.data)) {
-        // Cria o style global apenas uma vez
-       
+      // Cria os cards
+      info.data.forEach(function(dados) {
+        var linha = $(`
+          <div id="${dados.Id}" class="card">
+            <div class="cardContent" data-id="${dados.Id}">
+              <img src="${dados.Imagem}" alt="Imagem do produto" style="width: 32.7vh; height: 32.7vh; border-radius: 1vh;">
+              <span><p id="nome">${dados.Nome}</p></span>
+              <span style="display:none;"><p>${dados.Descricao}</p></span>
+              <span style="display:none;">${dados.Escola}</span>
+              <span id="Dados" style="display:none;">${dados.Id}</span>
+              <span id="Preco">R$ ${dados.preco}</span>
+            </div>
+          </div>
+        `);
 
+        // Adiciona clique para redirecionamento
+        linha.on("click", function() {
+          redirecionarPG(dados.Id);
+        });
 
-        // Limpa o conteúdo anterior
-        texto.innerHTML = ""
+        texto.append(linha);
+      });
 
-        info.data.forEach((dados) => {
-          var linha = document.createElement("div")
-          linha.id = dados.Id
-          linha.classList.add("card")
-          linha.addEventListener("click", function() {
-            redirecionarPG(dados.Id);
-          });
-          linha.innerHTML = `
-            
-              <div  class="cardContent" data-id="${dados.Id}" >
-                <img src="${dados.Imagem}" alt="Imagem do produto" style="width: 32.7vh; height: 32.7vh; border-radius: 1vh;">
-                <span><p id="nome"> ${dados.Nome}</p></span>
-                <span style="display:none;"><p >${dados.Descricao}</p></span>
-                <span style="display:none;">${dados.Escola}</span>
-                <span id="Dados" style="display:none;">${dados.Id}</span>
-                <span id="Preco"> R$ ${dados.preco}</span>
-              </div>
-            
-          `
-          texto.appendChild(linha)
-        })
-
-        document.addEventListener("click", (event) => {
-          const card = event.target.closest(".card")
-          if (card) {
-            const elementId = card.getAttribute("data-id")
-          }
-        })
-      } else {
-        console.log("Elemento com id 'content' não encontrado ou info.data não é um array.")
-      }
     } else {
-      console.log("Erro ao conectar ao servidor.")
+      console.log("Elemento com id 'cardContainer' não encontrado ou info.data não é um array.");
     }
-  } catch (error) {
-    console.log(error)
+  },
+  error: function(jqXHR, textStatus, errorThrown) {
+    console.log("Erro ao conectar ao servidor:", textStatus, errorThrown);
+  },
+  complete: function() {
+    console.log("Requisição AJAX concluída");
   }
+});
 
-} 
+})
 // fim onload
 
 
@@ -202,33 +190,31 @@ window.location.href = "esqueci.html";
         async function vender() {
             const cardContainer = document.getElementById("cardContainer")
             cardContainer.innerHTML = `
-                <input type="text" id="Nome" placeholder="Nome do produto">
-    <textarea id="Descricao" placeholder="Descrição"></textarea>
-    <input type="file" id="Imagem">
-    <input type="number" id="Preco" placeholder="Preço">
-    <button id="vender" onclick="venderProduto()">Vender</button>
+       <section id='venderContainer'>
+          <input type="text" id="nomeA" placeholder="Nome do produto">
+          <textarea id="descricaoA" placeholder="Descrição"></textarea>
+          <input type="file" id="imagemA">
+          <input type="number" id="precoA" placeholder="Preço">
+          <button id="venderA" onclick="venderProduto()">Vender</button>
+        </section>
     `
 
   
     cardContainer.style.all = "unset";
     cardContainer.style.width = "85%";
-    cardContainer.style.minHeight = "100%";
-    cardContainer.style.flexShrink = "0";
-    cardContainer.style.background = "#c9d6da";
-    cardContainer.style.padding = "3vh"; // mantive o último do seu CSS
-    cardContainer.style.boxSizing = "border-box";
+    cardContainer.style.height = "auto";
+    cardContainer.style.backgroundColor = "white";
+    cardContainer.style.display = "flex"
+    cardContainer.style.padding = "3vh";
     cardContainer.style.zIndex = "100";
-    cardContainer.style.display = "grid";
-    cardContainer.style.gridTemplateColumns = "repeat(4, 1fr)";
-    cardContainer.style.gap = "3vh";
 
 
         }
         async function venderProduto() {
-            var nome = document.getElementById("Nome").value;
-            var descricao = document.getElementById("Descricao").value;
-            var form = document.getElementById("Imagem").files[0];
-            var preco = document.getElementById("Preco").value;
+            var nome = document.getElementById("nomeA").value;
+            var descricao = document.getElementById("descricaoA").value;
+            var form = document.getElementById("imagemA").files[0];
+            var preco = document.getElementById("precoA").value;
             if (nome == "" || descricao == "" || preco == "" || form == undefined) {
                 alert("Por favor, preencha todos os campos.");
                 return;
@@ -250,10 +236,10 @@ window.location.href = "esqueci.html";
                 // Verifica se a resposta é um JSON válido
                 if (resposta == "Produto cadastrado com sucesso!") {
                     alert("Produto cadastrado com sucesso.");
-                    document.getElementById("Nome").value = "";
-                    document.getElementById("Descricao").value = "";
-                    document.getElementById("Preco").value = "";
-                    document.getElementById("Imagem").value = "";
+                    document.getElementById("nomeA").value = "";
+                    document.getElementById("descricaoA").value = "";
+                    document.getElementById("precoA").value = "";
+                    document.getElementById("imagemA").value = "";
                 }else if(resposta == "erro: usuário não autenticado") {
                     window.location.href = "login.html";
                 } else {
@@ -353,7 +339,7 @@ async function sair(params) {
     });
   }
 }
-const abrirModal = document.getElementById("abrirCamera");
+const abrirModal = document.getElementById("abrirModal");
 const modalOverlay = document.getElementsByClassName("modal-overlay")[0];
 abrirModal.addEventListener("click", () => {
     modalOverlay.style.display = "flex";
@@ -445,4 +431,88 @@ function apagarProduto(id){
   console.log("Requisição AJAX excluir produto concluída");
   });
   }
+}
+
+function editar(sql,id, elemento, valor){
+  const elementoS = document.getElementById(elemento)
+
+  if(elemento!= "descricaoP"){
+  elementoS.innerHTML = `
+    <input type='text' class='${elemento}' id='${id}' value='${valor}'><input type='button' value='Editar' onclick='editarProduto(${id},"${sql}")'>
+  ` 
+  }else{
+    elementoS.innerHTML = `
+    <textarea class='${elemento}' id='${id}'>${valor}</textarea><input type='button' value='Editar' onclick='editarProduto(${id},"${sql}","${elemento}")'>
+  ` 
+  }
+}
+function editarProduto(id, sql, elemento){
+  
+  const valor = document.getElementById(id).value
+  
+ if(confirm("Tem certeza que deseja editar?")){
+    $.ajax({
+      url: "editarProduto.php",
+      type: "POST",
+      data: { id: id, sql:sql, elemento: elemento, valor:valor },
+      dataType: "html"
+    }).done(function(resp) {
+      document.getElementById("cardContainer").innerHTML = resp;
+    }).fail(function(jqXHR, textStatus) {
+      alert("Falha na requisição AJAX: " + textStatus);
+    }).always(function() {
+      console.log("Requisição AJAX editar concluída");
+    });
+  }
+
+}
+function editarImagem(id, elemento, valor){
+    const cardContainer = document.getElementById("cardContainer")
+    document.getElementsByClassName("modal")[0].innerHTML = `
+    <section id='modalImagem'>
+      <input type="file" id="imagemIMG">
+      <button id="vender" onclick="alterarIMG(${id}, '${valor}')">alterar</button>
+    </section>
+    `
+
+const modalOverlay = document.getElementsByClassName("modal-overlay")[0];
+
+  modalOverlay.style.display = "flex";
+
+}
+function alterarIMG(id, imgAtual){
+var fileInput = $("#imagemIMG")[0].files[0];
+    var formData = new FormData();
+    if (fileInput) {
+        formData.append("temimg?", true);
+        formData.append("arquivo", fileInput);
+        formData.append("id", id);
+        formData.append("imgatual", imgAtual);
+         $.ajax({
+            url: "alterarIMG.php",
+            type: "POST",
+            data: formData,
+            contentType: false,
+            processData: false,
+            dataType: "html"
+        }).done(function(resp) {
+
+          if(!true){
+            document.getElementsByClassName("modal")[0].innerHTML = resp;
+          }{
+            visualizarProduto(id)
+            const modalOverlay = document.getElementsByClassName("modal-overlay")[0];
+
+  modalOverlay.style.display = "none";
+
+          }
+        }).fail(function(jqXHR, textStatus ) {
+            console.log("Request failed: " + textStatus);
+        }).always(function() {
+            console.log("requisicão ajax edit universo concluida");            
+        });
+    } else {
+        alert("Selecione uma imagem.")
+    }
+
 }
