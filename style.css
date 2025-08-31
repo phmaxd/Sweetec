@@ -160,6 +160,7 @@ h1{
 #nome{
     font-weight:lighter;
     font-size: 3vh;
+    margin-bottom: 10vh;
 }
 nav{
     width: 100%;
@@ -271,7 +272,7 @@ main {
  position: absolute;
  top: 10vh;
   min-height: 100%;
- z-index: -10;
+ z-index: -100;
 }
 #cardContainer2 {
     position: absolute;
@@ -288,11 +289,8 @@ main {
   min-height: 100%;    /* garante altura total mesmo vazio */
   flex-shrink: 0;      /* impede de encolher no flex */
   background: #c9d6da;
-  padding: 20px;
+  
   box-sizing: border-box;
-}
-
-#cardContainer {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 3vh;
@@ -325,9 +323,90 @@ main {
 .modal {
     position: relative;
     background: rgb(255, 255, 255);
-    padding: 10px;
-    width:  70%;
-    height: 90%;
+    padding: 2vh;
+    width:  40%;
+    height: 60%;
     border-radius: 2vh;
     box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    font-size: 3vh;
+}
+
+
+
+/* ----------------------------------- */
+
+#imagemP{
+    width: 70vh;
+    height: 67vh;
+    border-radius: 2vh;
+}
+
+#produtoContent {
+    
+    width: 100%;
+    height: 100vh; /* só pra exemplo, pode ser o tamanho que quiser */
+    display: flex; /* faz o conteúdo ficar lado a lado */
+}
+
+#ladoEsquerdoP {
+    width: 100%;
+    height: 100%;
+    padding: 3vh;
+    
+    display: flex;
+    flex-direction: column;
+}
+
+#ladoDireitoP {
+    width: 70vh;
+    height: 100%;
+    
+    display: flex;
+    flex-direction: column;
+}
+#nomeP{
+    font-size: 7vh;
+    margin-bottom: 2vh;
+}
+#precoP{
+    color: rgb(36, 34, 34);
+    font-size: 6vh;
+    font-weight: bold;
+    margin-bottom: 2vh;
+}
+#descricaoP{
+    font-size: 3vh;
+    font-style: italic;
+    font-weight: lighter;
+    margin-bottom: 2vh;
+}
+#contato{
+    border-radius: 1vh;
+    padding: 2vh;
+    width: 50vh;
+    background-color: rgb(255, 188, 188);
+    display: flex;
+    flex-direction: column;
+    font-size: 2.5vh;
+    position: absolute;
+    bottom: 36vh;
+}
+#usuariosP{
+    font-weight: bold;
+}
+#apagar{
+    text-align: center;
+    width: 15vh;
+    margin-top: 2vh;
+    color: white;
+    border-radius: 0.5vh;
+    background-color: red;
+    border: red 1px solid;
+    cursor:pointer;
+    padding: 1vh;
+    font-size: 2vh;
+}
+#apagar:hover{
+    background-color: white;
+    color: red;
 }

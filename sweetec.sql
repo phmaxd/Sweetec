@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Tempo de geração: 18/08/2025 às 12:23
+-- Tempo de geração: 31/08/2025 às 14:14
 -- Versão do servidor: 9.1.0
 -- Versão do PHP: 8.3.14
 
@@ -20,8 +20,6 @@ SET time_zone = "+00:00";
 --
 -- Banco de dados: `sweetec`
 --
-CREATE DATABASE IF NOT EXISTS `sweetec` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci;
-USE `sweetec`;
 
 -- --------------------------------------------------------
 
@@ -51,16 +49,20 @@ CREATE TABLE IF NOT EXISTS `produtos` (
   `preco` double NOT NULL,
   `Escola` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   PRIMARY KEY (`Id`)
-) ENGINE=MyISAM AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=26 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Despejando dados para a tabela `produtos`
 --
 
 INSERT INTO `produtos` (`Nome`, `Descricao`, `Id`, `Imagem`, `preco`, `Escola`) VALUES
-('borracha de chocolate', 'gostosa', 12, 'imagens/68a31658b5c9a.torrent', 13, 'EE Profª Silvia Jorge Pollastrini'),
-('Fabricio de chocolate', 'redondo', 13, 'imagens/68a3168756a5e.ico', -1, 'Maria Aparecida Soares Amêndola'),
-('Santos de chocolate', 'Perdeu', 14, 'imagens/68a318b495b3e.ico', -6, 'Ana Cândida Ebling de Oliveira');
+('Cachorro', 'É um cachorro', 19, 'imagens/68b343a3b9dac.png', 9.99, 'EE Profª Silvia Jorge Pollastrini'),
+('Cadeira Gamer', 'cadeira gamer pro', 20, 'imagens/68b37ae1edbea.png', 799, 'Etec de Itanhaém'),
+('Isaac', 'é o isaac', 15, 'imagens/68a3392fd3ca3.jpg', 10, 'Maria Aparecida Soares Amêndola'),
+('Cookies de monstro', 'Feito de muito de leite de monstro', 16, 'imagens/68ada93ed6ca1.jpg', 9, 'Maria Aparecida Soares Amêndola'),
+('Marvel', 'Sim, estamos vendendo a marvel', 17, 'imagens/68adb4b2909df.jpg', 10, 'Maria Aparecida Soares Amêndola'),
+('Loli', 'Estamos vendendo uma loli para uso pessoal', 18, 'imagens/68adc4a4aa061.jpg', 150.99, 'Maria Aparecida Soares Amêndola'),
+('Cookie caseiro', 'Cookies caseiros feitos com muito amor, perfeitos para ocasiões especiais.', 23, 'imagens/68b44f4fc5804.png', 5, 'Etec de Itanhaém');
 
 -- --------------------------------------------------------
 
@@ -92,16 +94,20 @@ CREATE TABLE IF NOT EXISTS `userproduto` (
   PRIMARY KEY (`Id`),
   KEY `usuarios` (`usuarios`),
   KEY `produtos` (`produtos`)
-) ENGINE=MyISAM AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=21 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Despejando dados para a tabela `userproduto`
 --
 
 INSERT INTO `userproduto` (`usuarios`, `produtos`, `Id`) VALUES
-(12, 14, 9),
-(8, 13, 8),
-(9, 12, 7);
+(13, 23, 18),
+(8, 15, 10),
+(8, 16, 11),
+(8, 17, 12),
+(8, 18, 13),
+(9, 19, 14),
+(13, 20, 15);
 
 -- --------------------------------------------------------
 
@@ -117,18 +123,16 @@ CREATE TABLE IF NOT EXISTS `usuarios` (
   `Id` int NOT NULL AUTO_INCREMENT,
   `Numero` varchar(15) NOT NULL,
   PRIMARY KEY (`Id`)
-) ENGINE=MyISAM AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Despejando dados para a tabela `usuarios`
 --
 
 INSERT INTO `usuarios` (`Usuarios`, `Senha`, `Escola`, `Id`, `Numero`) VALUES
-('Pedro', '$2y$10$xtxXbtLMNv7K9jElfOqIlun9LBvGbgXCVjTe.Bnyd0dy6t3jg63Uy', 'EE Profª Silvia Jorge Pollastrini', 9, '88888'),
+('Pedro', '$2y$10$KGsOCPk.h0dm0Rdf3AQZ1.lxxBZP7AsaZEWLmxWrTmvC6WpRZI/YC', 'EE Profª Silvia Jorge Pollastrini', 9, '88888'),
 ('Isaac', '$2y$10$BH5Af7AQeeIIGrkaxJkBFe0poYpKYY3x9tKEWqDDvDp1ml8ub5uCq', 'Maria Aparecida Soares Amêndola', 8, '33333'),
-('Fabricio', '$2y$10$hAIZX5YvQC..Cn8UhDtMK.mLmjnyswMKZVwZ0PxhyccxdCx.0.sJu', 'Maria Aparecida Soares Amêndola', 10, '551319480984747'),
-('Andre', '$2y$10$m2sRa/ZiRZVITEhJKeFg0ObJfD09b3Net8Bu7DgwcjK7y10drV3eW', 'Ana Cândida Ebling de Oliveira', 11, '551312312312421'),
-('Afonso', '$2y$10$DglSsVNZsGkvZmowBD06ReQgVF29D0WHVO10jBdirgi4ZCSQS5f0e', 'Ana Cândida Ebling de Oliveira', 12, '5513988386852');
+('isaac2', '$2y$10$tWOy3PtHM7QvQa3p.x84jOQOmoNI5OpQJS/87IzejAv4L8vXK6zGe', 'Etec de Itanhaém', 13, '13 99161-7260');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

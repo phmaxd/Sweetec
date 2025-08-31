@@ -2,7 +2,20 @@ window.onload = async () => {
 const paginaAtual = window.location.pathname.split('/').pop();
   
 if (paginaAtual === "Cadastro.html"|| paginaAtual==="login.html"){
-    //faz nada, já que isso é pra verificar login, e essas sao as paginas pra logar
+       $.ajax({
+      url: "verificarLogin.php",
+      type: "POST",
+      data: { verificar: "verificação" },
+      dataType: "json"
+    }).done(function(resp) {
+      if(resp.islogado != false){
+        window.location.href = "pagina.html";
+      }
+    }).fail(function(jqXHR, textStatus) {
+      alert("Falha na requisição AJAX: " + textStatus);
+    }).always(function() {
+      console.log("Requisição AJAX verificar login concluída");
+    }); 
 }else{
 
     $.ajax({
@@ -53,12 +66,11 @@ if (paginaAtual === "Cadastro.html"|| paginaAtual==="login.html"){
           linha.innerHTML = `
             
               <div  class="cardContent" data-id="${dados.Id}" >
-                <img src="${dados.Imagem}" alt="Imagem do produto" style="width: 100%; height: auto; border-radius: 1vh;">
+                <img src="${dados.Imagem}" alt="Imagem do produto" style="width: 32.7vh; height: 32.7vh; border-radius: 1vh;">
                 <span><p id="nome"> ${dados.Nome}</p></span>
                 <span style="display:none;"><p >${dados.Descricao}</p></span>
-
                 <span style="display:none;">${dados.Escola}</span>
-                <span id="Dados" style="display:none;">${dados.Id}</span><br><br>
+                <span id="Dados" style="display:none;">${dados.Id}</span>
                 <span id="Preco"> R$ ${dados.preco}</span>
               </div>
             
@@ -188,7 +200,28 @@ window.location.href = "esqueci.html";
             }
         }
         async function vender() {
-            window.location.href = "vender.html";
+            const cardContainer = document.getElementById("cardContainer")
+            cardContainer.innerHTML = `
+                <input type="text" id="Nome" placeholder="Nome do produto">
+    <textarea id="Descricao" placeholder="Descrição"></textarea>
+    <input type="file" id="Imagem">
+    <input type="number" id="Preco" placeholder="Preço">
+    <button id="vender" onclick="venderProduto()">Vender</button>
+    `
+
+  
+    cardContainer.style.all = "unset";
+    cardContainer.style.width = "85%";
+    cardContainer.style.minHeight = "100%";
+    cardContainer.style.flexShrink = "0";
+    cardContainer.style.background = "#c9d6da";
+    cardContainer.style.padding = "3vh"; // mantive o último do seu CSS
+    cardContainer.style.boxSizing = "border-box";
+    cardContainer.style.zIndex = "100";
+    cardContainer.style.display = "grid";
+    cardContainer.style.gridTemplateColumns = "repeat(4, 1fr)";
+    cardContainer.style.gap = "3vh";
+
 
         }
         async function venderProduto() {
@@ -257,7 +290,16 @@ async function redirecionarPG(id) {
     data: { id: id },
     dataType: "html"
   }).done(function(resp) {
-  $("main").html(resp); 
+    const cardContainer = document.getElementById("cardContainer")
+    cardContainer.innerHTML = resp
+    cardContainer.style.all = "unset";
+    cardContainer.style.width = "85%";
+    cardContainer.style.height = "auto";
+    cardContainer.style.backgroundColor = "white";
+    cardContainer.style.display = "flex"
+    cardContainer.style.padding = "3vh";
+    cardContainer.style.zIndex = "100";
+    
   }).fail(function(jqXHR, textStatus) {
   alert("Falha na requisição AJAX: " + textStatus);
   }).always(function() {
@@ -323,3 +365,84 @@ modalOverlay.addEventListener("click", (e) => {
         modalOverlay.style.display = "none";
     }
 });
+
+
+function produtosUser() {
+  $.ajax({
+    url: "produtosUser.php",
+    type: "POST",
+    data: { user: "user" },
+    dataType: "html"
+  }).done(function(resp) {
+    document.getElementById("cardContainer").innerHTML = resp;
+    cardContainer.innerHTML = resp;
+    cardContainer.style.all = "unset";
+    cardContainer.style.width = "85%";
+    cardContainer.style.minHeight = "100%";
+    cardContainer.style.flexShrink = "0";
+    cardContainer.style.background = "#c9d6da";
+    cardContainer.style.padding = "3vh"; // mantive o último do seu CSS
+    cardContainer.style.boxSizing = "border-box";
+    cardContainer.style.zIndex = "100";
+    cardContainer.style.display = "grid";
+    cardContainer.style.gridTemplateColumns = "repeat(4, 1fr)";
+    cardContainer.style.gap = "3vh";
+
+  }).fail(function(jqXHR, textStatus) {
+    alert("Falha na requisição AJAX: " + textStatus);
+  }).always(function() {
+    console.log("Requisição AJAX produtosUser concluída");
+  });
+}
+
+function visualizarProduto(id){
+  $.ajax({
+    url: "instanciarProdutoUser.php",
+    type: "POST",
+    data: { id: id },
+    dataType: "html"
+  }).done(function(resp) {
+    const cardContainer = document.getElementById("cardContainer")
+    cardContainer.innerHTML = resp
+    cardContainer.style.all = "unset";
+    cardContainer.style.width = "85%";
+    cardContainer.style.height = "auto";
+    cardContainer.style.backgroundColor = "white";
+    cardContainer.style.display = "flex"
+    cardContainer.style.padding = "3vh";
+    cardContainer.style.zIndex = "100";
+    
+  }).fail(function(jqXHR, textStatus) {
+  alert("Falha na requisição AJAX: " + textStatus);
+  }).always(function() {
+  console.log("Requisição AJAX instanciar produto do usuario concluída");
+  });
+}
+function apagarProduto(id){
+  if(confirm("você tem certeza que deseja excluir este produto?")){
+  $.ajax({
+    url: "apagarProduto.php",
+    type: "POST",
+    data: { id: id },
+    dataType: "html"
+  }).done(function(resp) {
+    document.getElementById("cardContainer").innerHTML = resp;
+    cardContainer.innerHTML = resp;
+    cardContainer.style.all = "unset";
+    cardContainer.style.width = "85%";
+    cardContainer.style.minHeight = "100%";
+    cardContainer.style.flexShrink = "0";
+    cardContainer.style.background = "#c9d6da";
+    cardContainer.style.padding = "3vh"; // mantive o último do seu CSS
+    cardContainer.style.boxSizing = "border-box";
+    cardContainer.style.zIndex = "100";
+    cardContainer.style.display = "grid";
+    cardContainer.style.gridTemplateColumns = "repeat(4, 1fr)";
+    cardContainer.style.gap = "3vh";
+  }).fail(function(jqXHR, textStatus) {
+  alert("Falha na requisição AJAX: " + textStatus);
+  }).always(function() {
+  console.log("Requisição AJAX excluir produto concluída");
+  });
+  }
+}

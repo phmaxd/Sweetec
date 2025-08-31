@@ -11,6 +11,7 @@ $verificacao->execute();
 if ($verificacao->rowCount() > 0) {
     $usuario = $verificacao->fetch(PDO::FETCH_ASSOC);
     if (password_verify($senha, $usuario['Senha'])) {
+        
         session_start();
         $_SESSION['IsLogadoCG'] = true;
         $_SESSION['usuario'] = $usuario['Id'];

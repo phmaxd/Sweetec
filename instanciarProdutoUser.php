@@ -22,12 +22,15 @@ if (!$resultado) {
     exit();
 }
 
+
+
 echo "
 
     <section id='produtoContent'>
     
         <section id='ladoDireitoP'>
             <img id='imagemP' src='" . $resultado['Imagem'] . "'>
+            <span id='apagar' onclick='apagarProduto(".$id.")'>Apagar produto</span>
         </section>
         <section id='ladoEsquerdoP'>
             <span id='nomeP'>".$resultado['Nome']." </span>
