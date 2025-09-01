@@ -193,7 +193,7 @@ window.location.href = "esqueci.html";
        <section id='venderContainer'>
        <h2>Anuncie um produto</h2>
           <input type="text" class='inputVender' id="nomeA" placeholder="Nome do produto">
-          <textarea id="descricaoA" maxlength='1000' placeholder="Descrição"></textarea>
+          <textarea id="descricaoA" onkeydown="if(event.key==='Enter') bloquearEnter(event)" maxlength='1000' placeholder="Descrição"></textarea>
           <input type="file" id="imagemA">
           <input type="number" class='inputVender' id="precoA" placeholder="Preço">
           <input type='button' id="venderA" onclick="venderProduto()" value='Vender'>
@@ -450,7 +450,7 @@ function editar(sql, id, elemento, valor) {
     `;
   } else {
     elementoS.innerHTML = `
-      <textarea maxlength='1000' class='${elemento}' id='${id}'>${valor}</textarea>
+      <textarea maxlength='1000' onkeydown="if(event.key==='Enter') bloquearEnter(event)" class='${elemento}' id='${id}'>${valor}</textarea>
       <input type='button' value='Editar' onclick='editarProduto(${id},"${sql}","${elemento}")'>
     `;
   }
@@ -672,3 +672,7 @@ document.addEventListener("keydown", function(event) {
   modalOverlay.style.display = "none";
     }
 });
+
+function bloquearEnter(e){
+e.preventDefault();
+}
