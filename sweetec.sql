@@ -56,9 +56,9 @@ CREATE TABLE IF NOT EXISTS `produtos` (
 --
 
 INSERT INTO `produtos` (`Nome`, `Descricao`, `Id`, `Imagem`, `preco`, `Escola`) VALUES
-('Bolo de cenoura', 'Bolo de cenoura com cobertura de chocolate.', 32, 'imagens/68b4a71609ac7.png', 8, 'EE Profª Silvia Jorge Pollastrini'),
-('Morango do Amor', 'Morango do amor delicioso, feito com carinho e com muito amor, perfeito para ocasiões especiais.', 26, 'imagens/68b461a773e91.png', 4, 'Maria Aparecida Soares Amêndola'),
-('Cookie caseiro', 'Cookies caseiros feitos com muito amor, perfeitos para ocasiões especiais.', 23, 'imagens/68b4930352f4c.png', 5, 'Etec de Itanhaém');
+('Bolo de cenoura', 'Bolo de cenoura com cobertura de chocolate.', 32, 'uploads/68b4a71609ac7.png', 8, 'EE Profª Silvia Jorge Pollastrini'),
+('Morango do Amor', 'Morango do amor delicioso, feito com carinho e com muito amor, perfeito para ocasiões especiais.', 26, 'uploads/68b461a773e91.png', 4, 'Maria Aparecida Soares Amêndola'),
+('Cookie caseiro', 'Cookies caseiros feitos com muito amor, perfeitos para ocasiões especiais.', 23, 'uploads/68b4930352f4c.png', 5, 'Etec de Itanhaém');
 
 -- --------------------------------------------------------
 

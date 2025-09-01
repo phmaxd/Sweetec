@@ -14,11 +14,11 @@ $arquivo = $_FILES['imagem'] ?? '';
 $escola = $_SESSION['escola'] ?? '';
 if (isset($arquivo) && isset($nome) && isset($descricao) && isset($preco)) {
     $caminhoTemporario = $arquivo['tmp_name'];
-    if (!file_exists('imagens/')) {
-        mkdir('imagens/', 0777, true);
+    if (!file_exists('uploads/')) {
+        mkdir('uploads/', 0777, true);
     }
     $extensao = strtolower(pathinfo($arquivo['name'], PATHINFO_EXTENSION));
-    $novoNome = "imagens/" . uniqid() . '.' . $extensao;
+    $novoNome = "uploads/" . uniqid() . '.' . $extensao;
     if (move_uploaded_file($caminhoTemporario, $novoNome)) {
         try {
             $sql = "INSERT INTO produtos VALUES(:Nome,:Descricao,null,:Imagem,:preco,:Escola)";

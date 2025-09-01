@@ -14,7 +14,7 @@ if (isset($_FILES['arquivo']) && $_FILES['arquivo']['error'] === UPLOAD_ERR_OK) 
     // cria um nome novo pro arquivo dentro do server para não sobrescrever arquivos com nome igual
     $newNameFile = uniqid();
     // Diretório para onde o arquivo será movido
-    $pasta_server = 'imagens/';
+    $pasta_server = 'uploads/';
     
     // Verifica se a pasta de uploads existe, se não cria
     if (!file_exists($pasta_server)) {
