@@ -9,7 +9,7 @@ if (paginaAtual === "Cadastro.html"|| paginaAtual==="login.html"){
       dataType: "json"
     }).done(function(resp) {
       if(resp.islogado != false){
-        window.location.href = "pagina.html";
+        window.location.href = "index.html";
       }
     }).fail(function(jqXHR, textStatus) {
       alert("Falha na requisição AJAX: " + textStatus);
@@ -111,7 +111,7 @@ const data = new URLSearchParams();
             alert("Usuário ou senha incorretos.");
         } else {
             alert("Login realizado com sucesso.");
-            window.location.href = "pagina.html";
+            window.location.href = "index.html";
         }
     }
 }
@@ -302,7 +302,7 @@ document.getElementById("Procurar").addEventListener("input", function(event) {
 
 async function refresh(params) {
   
-  window.location.href = "pagina.html"
+  window.location.href = "index.html"
 }
 
 async function conta(params) {

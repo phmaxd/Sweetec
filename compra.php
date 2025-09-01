@@ -3,7 +3,7 @@ include 'conecta.php';
 
 Session_start();
 if (!isset($_SESSION['usuario'])) {
-    header("Location: pagina.html");
+    header("Location: index.html");
     exit();
 }
 $compra = $_POST['id'];

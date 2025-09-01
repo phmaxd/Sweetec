@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Tempo de geração: 01/09/2025 às 02:51
+-- Tempo de geração: 01/09/2025 às 03:37
 -- Versão do servidor: 9.1.0
 -- Versão do PHP: 8.3.14
 
@@ -49,7 +49,7 @@ CREATE TABLE IF NOT EXISTS `produtos` (
   `preco` double NOT NULL,
   `Escola` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   PRIMARY KEY (`Id`)
-) ENGINE=MyISAM AUTO_INCREMENT=34 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=36 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Despejando dados para a tabela `produtos`
@@ -90,7 +90,7 @@ CREATE TABLE IF NOT EXISTS `userproduto` (
   PRIMARY KEY (`Id`),
   KEY `usuarios` (`usuarios`),
   KEY `produtos` (`produtos`)
-) ENGINE=MyISAM AUTO_INCREMENT=29 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=31 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Despejando dados para a tabela `userproduto`
