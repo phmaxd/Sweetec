@@ -27,7 +27,7 @@ echo "
     <section id='produtoContent'>
     
         <section id='ladoDireitoP'>
-            <img id='imagemP' src='" . $resultado['Imagem'] . "'>
+            <img id='imagemP' title='".$resultado['Nome']."' src='" . $resultado['Imagem'] . "'>
         </section>
         <section id='ladoEsquerdoP'>
             <span id='nomeP'>".$resultado['Nome']." </span>

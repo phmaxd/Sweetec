@@ -21,9 +21,9 @@ if ($stmt->rowCount() > 0) {
 
         if ($row2) {
             echo "
-                <div class='card' onclick='visualizarProduto(".$row2['Id'].")'>
+                <div class='card' tabindex='0' onkeydown=\"if(event.key==='Enter') visualizarProduto(".$row2['Id'].")\" onclick='visualizarProduto(".$row2['Id'].")'>
                   <div class='cardContent' data-id='".$row2['Id']."' >
-                    <img src='".$row2['Imagem']."' alt='Imagem do produto' style='width: 32.7vh; height: 32.7vh; border-radius: 1vh;'>
+                    <img src='".$row2['Imagem']."' title='".$row2['Nome']."' alt='Imagem do produto' style='width: 32.7vh; height: 32.7vh; border-radius: 1vh;'>
                     <span><p id='nome'> ".$row2['Nome']."</p></span>
                     <span style='display:none;'><p>".$row2['Descricao']."</p></span>
                     <span style='display:none;'>".$row2['Escola']."</span>

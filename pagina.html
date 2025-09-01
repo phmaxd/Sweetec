@@ -14,7 +14,7 @@
     <header>
         <nav>
             <span class="logo">
-                <img src="imagens/SweeTec (1).png" id="logo" onclick="refresh()" >
+                <img tabindex="0" src="imagens/SweeTec (1).png" title="SweeTec Logo" id="logo" onkeydown="if(event.key==='Enter') refresh()" onclick="refresh()" >
             </span>
             <span class="searchSpan"><i onclick="search()" class="fa-solid fa-magnifying-glass white"></i>
                 <input type="text" id="Procurar" class="inputSpan" placeholder="Search...">
@@ -27,31 +27,31 @@
     <main>
         <section id="barra-lateral">
 
-            <a onclick="refresh()" class="botao-lateral">
+            <a tabindex="0" onclick="refresh()" onkeydown="if(event.key==='Enter') refresh()" class="botao-lateral">
                 <span >
                 <i class="fa-solid fa-bars"></i> Inicio
                 </span>   
             </a>
 
-            <a onclick="vender()"class="botao-lateral">
+            <a tabindex="0" onclick="vender()" onkeydown="if(event.key==='Enter') vender()" class="botao-lateral">
                 <span>
                 <i class="fa-solid fa-cart-shopping"></i> Anunciar
                 </span>   
             </a>
 
-            <a class="botao-lateral" onclick="produtosUser()">
+            <a tabindex="0" class="botao-lateral" onkeydown="if(event.key==='Enter') produtosUser()" onclick="produtosUser()">
                 <span>
                     <i class="fa-solid fa-folder"></i> Meus produtos
                 </span>
             </a>
             
-            <a class="botao-lateral" id="abrirModal" onclick="conta()">
+            <a tabindex="0" class="botao-lateral" id="abrirModal" onkeydown="if(event.key==='Enter') conta()" onclick="conta()">
                 <span>
                     <i class="fa-solid fa-user"></i> Conta
                 </span>
             </a>
 
-            <a class="botao-lateral" onclick="sair()">
+            <a tabindex="0" class="botao-lateral" onkeydown="if(event.key==='Enter') sair()" onclick="sair()">
                 <span>
                     <i class="fa-solid fa-right-from-bracket"></i> Sair
                 </span>

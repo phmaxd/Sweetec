@@ -88,7 +88,7 @@ h1{
     max-width: 300px;
     
 }
-#Escolas{
+#Escolas, .Escolas{
     max-width: 78%;
     width: 100%;
     padding: 8px 12px;
@@ -103,11 +103,11 @@ h1{
     transition: border-color 0.2s, box-shadow 0.2s;
     box-shadow: 1px 1px 5px rgba(0,0,0,0.1);
     }
-    #Escolas:focus {
+    #Escolas:focus, .Escolas:focus {
         border-color: #f981af;
         box-shadow: 0 0 0 2px #f981af33;
     }
-    #Escolas option {
+    #Escolas option, .Escolas option{
         background: #fff;
         color: #333;
     }
@@ -440,7 +440,16 @@ main {
 #imagemIMG{
     margin-bottom: 2vh;
 }
-#vender{
+.inputVender{
+    width: 50vh;
+padding: 2vh;
+border-radius: 1.5vh;
+font-size: 2vh;
+border: solid 0.2vh black;
+}
+
+
+#alterarIMGBTN{
     background-color: #f981af;
     font-size: 22px;
     margin-top: 20px;
@@ -450,4 +459,47 @@ main {
     background-color: white;
     border:solid 1px black;
     cursor: pointer;
+}
+#venderA{
+        
+    font-size: 2vh;
+    margin-top: 20px;
+    width: 54.3vh;
+    padding: 2vh;
+    border-radius: 22px;
+    background-color: white;
+    border:solid 0.2vh black;
+    cursor: pointer;
+    border-radius: 1.5vh;
+    
+}
+#modalConta{
+    display: flex;
+    flex-direction: column;
+    row-gap: 2vh;
+}
+#venderContainer{
+    display: flex;
+    flex-direction: column;
+    row-gap: 2vh;
+}
+textarea {
+  width: 50vh;
+  height: 20vh;
+  padding: 2vh;
+  font-size: 2vh;
+  border-radius: 1.5vh;
+  border: 1px solid #ccc;
+  resize: none;
+}
+textarea::placeholder{
+    
+    font-size: 2vh;
+}
+
+h2{
+    font-size: 4vh;
+}
+#imagemA{
+    font-size: 2vh;
 }
