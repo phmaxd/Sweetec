@@ -1,0 +1,505 @@
+body{
+    margin: 0;
+    padding: 0;
+    background-color: #e5aaac;
+    font-family: Arial, Helvetica, sans-serif;
+    height: 100%;
+}
+
+#formulario {
+    width: 260px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    border: none;
+    transform: translate(-50%, -50%);
+    padding: 20px 50px 70px 50px;
+    background-color: white;
+    border-radius: 22px;
+    box-shadow: 3px 3px 10px black;
+}
+#caixaInput {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    height: 20px;
+    border-radius: 22px;
+    padding: 10px;
+    border: solid 1px black;
+
+}
+    input:-webkit-autofill {
+        box-shadow: 0 0 0 100px #ffffff inset !important;
+
+    }
+.inputInput{
+    border: none;
+    background-color: transparent;
+    outline: none;
+    margin-left: 5px;
+}
+.inputInput:focus {
+    border: none;
+    background-color: transparent;
+    outline: none;
+    
+}
+.inputInput::placeholder {
+    color: black;
+}
+#alterar, #Login, #Cadastrar{
+    font-size: 22px;
+    margin-top: 20px;
+    width: 100%;
+    height: 40px;
+    border-radius: 22px;
+    background-color: white;
+    border:solid 1px black;
+    cursor: pointer;
+}
+#alterar:hover, #Login:hover, #Cadastrar:hover {
+    animation: trocar 0.3s forwards;
+    color: black;
+}
+
+#Esqueci{
+    cursor: pointer;
+    position: relative;
+    top: 5px;
+    right: -95px;
+}
+h1{
+
+    text-align: center;
+}
+@keyframes trocar {
+    0% {
+        
+    }
+    100% {
+        border: none;
+        background-color: #f981af;
+    }
+}
+#Logo {
+    
+    width: 50%;
+    max-width: 300px;
+    
+}
+#Escolas, .Escolas{
+    max-width: 78%;
+    width: 100%;
+    padding: 8px 12px;
+    border-radius: 22px;
+    border: 1px solid black;
+    background-color: #fff;
+    font-size: 16px;
+    color: #333;
+    outline: none;
+    appearance: none;
+    cursor: pointer;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    box-shadow: 1px 1px 5px rgba(0,0,0,0.1);
+    }
+    #Escolas:focus, .Escolas:focus {
+        border-color: #f981af;
+        box-shadow: 0 0 0 2px #f981af33;
+    }
+    #Escolas option, .Escolas option{
+        background: #fff;
+        color: #333;
+    }
+
+#butaoDeBaixo {
+    text-align: center;
+}
+.card {
+    background: #fff;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    padding: 2vh;
+    display: flex;
+    
+    flex-direction: column;
+    align-items: center;
+    min-height: 20vh;
+    transition: box-shadow 0.2s;
+    cursor: pointer;
+}
+
+.card:hover {
+    background-color: #fde9f1;
+    animation: levantar 0.3s forwards;
+}
+
+.cardContent{
+    position: relative;
+    font-size: 100%;
+    width: 100%;
+    height: 100%;
+}
+
+@keyframes levantar {
+    0% {
+        
+    }
+    100% {
+        
+        transform: translateY(-2vh);
+    }
+}
+#Preco{
+    
+    position: absolute;
+    bottom: 0%;
+    right: 0%;
+    font-size: 4vh;
+}
+
+#nome{
+    font-weight:lighter;
+    font-size: 3vh;
+    margin-bottom: 10vh;
+}
+nav{
+    width: 100%;
+    height: 10vh;
+    background-color: #d99096;
+    display: flex;
+    position: fixed;
+    top: 0;
+    left: 0;  
+    z-index: 900;  
+}
+#logo{
+    width: 8vh;
+    margin: 1vh;
+    cursor: pointer;
+}
+.searchSpan{
+    position: absolute;
+    left: 40vh;
+    top: 50%;
+    
+    transform: translatey(-50%);
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    height: 3vh;
+    max-height: 3vh;
+    border-radius: 22px;
+    padding: 10px;
+    
+
+}
+.inputSpan{
+    width:90vh;
+
+    border: none;
+    background-color: transparent;
+    outline: none;
+    margin-left: 1vh;
+    color: #000000;
+
+}
+.inputSpan:focus {
+    border: none;
+    background-color: transparent;
+    outline: none;
+    
+}
+.inputSpan::placeholder {
+    color: #000000;
+}
+.inputSpan:-webkit-autofill {
+        box-shadow: 0 0 0 100px white inset !important;
+        -webkit-text-fill-color: black !important;
+    }
+.white{
+    color: #000000;
+    cursor: pointer;
+}
+.botao-lateral{
+    width: 100%;
+    padding: 1.5vh;
+    color: black;
+    border: none;
+    background-color: transparent;
+    font-size: 2.5vh;
+}
+.botao-lateral:hover{
+    
+    animation: trocar 0.1s forwards;
+    cursor: pointer;
+}
+
+
+
+main {
+    position: absolute;
+    flex: 1;
+  display: flex;
+  top: 10vh;
+  height: auto;
+  width: 100%;
+}
+#tudo {
+    position: absolute;
+    flex: 1;
+  display: flex;
+  top: 10vh;
+  height: 100%;
+  width: 100%;
+}
+
+
+#barra-lateral {
+    background-color: #e5aaac;
+  width: 15%;             
+  color: white;
+  box-sizing: border-box;
+    display: flex;             
+  flex-direction: column;   
+  z-index: 100; 
+          
+}
+#barra-lateral2 {
+    background-color: #e5aaac;
+  width: 15%;              
+ position: absolute;
+ top: 10vh;
+  min-height: 100%;
+ z-index: -100;
+}
+#cardContainer2 {
+    position: absolute;
+    right: 0;
+  width: 85%;          
+  min-height: 100%;
+  flex-shrink: 0;      
+  background: #c9d6da;
+
+  z-index: -100;
+}
+#cardContainer {
+  width: 85%;          /* ocupa 85% da largura */
+  min-height: 100%;    /* garante altura total mesmo vazio */
+  flex-shrink: 0;      /* impede de encolher no flex */
+  background: #c9d6da;
+  
+  box-sizing: border-box;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 3vh;
+    padding: 3vh;
+    z-index: 100;
+}
+#modalContent{
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    padding: 20px;
+    max-width: 600px;
+    margin: 20px auto;
+}
+
+.modal-overlay {
+    display: none; /* Escondido por padrão */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.377);
+    align-items: center;
+    justify-content: center;
+    z-index: 999;
+}
+
+/* Caixa do modal */
+.modal {
+    position: relative;
+    background: rgb(255, 255, 255);
+    padding: 2vh;
+    width:  40%;
+    height: 60%;
+    border-radius: 2vh;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    font-size: 3vh;
+}
+
+
+
+/* ----------------------------------- */
+
+#imagemP{
+    width: 70vh;
+    height: 67vh;
+    border-radius: 2vh;
+}
+
+#produtoContent {
+    
+    width: 100%;
+    height: 100vh; /* só pra exemplo, pode ser o tamanho que quiser */
+    display: flex; /* faz o conteúdo ficar lado a lado */
+}
+
+#ladoEsquerdoP {
+    width: 100%;
+    height: 100%;
+    padding: 3vh;
+    
+    display: flex;
+    flex-direction: column;
+}
+
+#ladoDireitoP {
+    width: 70vh;
+    height: 100%;
+    
+    display: flex;
+    flex-direction: column;
+}
+#nomeP{
+    font-size: 7vh;
+    margin-bottom: 2vh;
+}
+
+#precoP{
+    color: rgb(36, 34, 34);
+    font-size: 6vh;
+    font-weight: bold;
+    margin-bottom: 2vh;
+}
+#descricaoP{
+    font-size: 3vh;
+    font-style: italic;
+    font-weight: lighter;
+    margin-bottom: 2vh;
+}
+#contato{
+    border-radius: 1vh;
+    padding: 2vh;
+    width: 50vh;
+    background-color: rgb(255, 188, 188);
+    display: flex;
+    flex-direction: column;
+    font-size: 2.5vh;
+    position: absolute;
+    bottom: 36vh;
+}
+#usuariosP{
+    font-weight: bold;
+}
+#apagar{
+    text-align: center;
+    width: 15vh;
+    margin-top: 2vh;
+    color: white;
+    border-radius: 0.5vh;
+    background-color: red;
+    border: red 1px solid;
+    cursor:pointer;
+    padding: 1vh;
+    font-size: 2vh;
+}
+#apagar:hover{
+    background-color: white;
+    color: red;
+}
+.editar{
+    font-size: 3vh;
+    cursor: pointer;
+    color: #7e5e5f;
+}
+.editar:hover{
+    color: #e5aaac;
+}
+
+#emBaixoIMG{
+    display: flex;
+    position: relative;
+}
+#iIMG{
+    position: absolute;
+    right: 0;
+    top: 2vh;
+}
+#venderContainer{
+    height: 100vh;
+}
+#modalImagem{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+#imagemIMG{
+    margin-bottom: 2vh;
+}
+.inputVender{
+    width: 50vh;
+padding: 2vh;
+border-radius: 1.5vh;
+font-size: 2vh;
+border: solid 0.2vh black;
+}
+
+
+#alterarIMGBTN{
+    background-color: #f981af;
+    font-size: 22px;
+    margin-top: 20px;
+    width: 100%;
+    height: 40px;
+    border-radius: 22px;
+    background-color: white;
+    border:solid 1px black;
+    cursor: pointer;
+}
+#venderA{
+        
+    font-size: 2vh;
+    margin-top: 20px;
+    width: 54.3vh;
+    padding: 2vh;
+    border-radius: 22px;
+    background-color: white;
+    border:solid 0.2vh black;
+    cursor: pointer;
+    border-radius: 1.5vh;
+    
+}
+#modalConta{
+    display: flex;
+    flex-direction: column;
+    row-gap: 2vh;
+}
+#venderContainer{
+    display: flex;
+    flex-direction: column;
+    row-gap: 2vh;
+}
+textarea {
+  width: 50vh;
+  height: 20vh;
+  padding: 2vh;
+  font-size: 2vh;
+  border-radius: 1.5vh;
+  border: 1px solid #ccc;
+  resize: none;
+}
+textarea::placeholder{
+    
+    font-size: 2vh;
+}
+
+h2{
+    font-size: 4vh;
+}
+#imagemA{
+    font-size: 2vh;
+}
